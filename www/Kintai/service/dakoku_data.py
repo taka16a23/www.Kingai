@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#..!/usr/bin/env python
 # -*- coding: utf-8 -*-
 r"""dakoku_data -- DESCRIPTION
 
@@ -21,6 +21,7 @@ class DakokuData(object):
         """
         self._idm = idm
         self.status = DakokuData.FAILED
+        self._message = ""
 
     def get_idm(self, ):
         """SUMMARY
@@ -70,6 +71,41 @@ class DakokuData(object):
         # do
         self.status = status
         # ensure
+
+    def set_message(self, msg):
+        """SUMMARY
+
+        set_message(msg)
+
+        @Arguments:
+        - `msg`:
+
+        @Return:
+
+        @Error:
+        """
+        # require
+        self._message = msg
+        # do
+
+        # ensure
+
+    def get_message(self, ):
+        """SUMMARY
+
+        get_message()
+
+        @Return:
+
+        @Error:
+        """
+        # require
+
+        # do
+
+        # ensure
+
+        return self._message
 
 
 

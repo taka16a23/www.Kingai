@@ -27,9 +27,10 @@ class DakokuView(View):
         service = NormalDakokuService()
         data = DakokuData(idm)
         service.dakoku(data)
+        response = HttpResponse(data.get_message())
         if data.get_status() == data.SUCCESS:
-            return HttpResponse('hello')
-        return HttpResponse('failed')
+            return response
+        return response
 
     def post(self, request, *args, **kwargs):
         print('\n\npost')
