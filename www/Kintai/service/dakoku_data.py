@@ -50,8 +50,7 @@ class DakokuData(object):
         """
         # require
         # do
-        self.status = DakokuData.SUCCESS
-
+        return self.status
         # ensure
 
     def set_status(self, status):

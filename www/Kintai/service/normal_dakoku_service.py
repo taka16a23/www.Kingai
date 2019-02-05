@@ -36,17 +36,19 @@ class NormalDakokuService(BaseDakokuService):
         dakokuKubun = DakokuKubun.objects.get(statusMei="通常出勤")
         dakokuMethod = DakokuMethod.objects.get(
             dakouMethodMei="IC", sakujoFlag=False)
+        print(idm)
         idmUser = IDmUserRepository().IDmToUser(idm)
         # do
-        if idmUser != None:
-            dakoku = Dakoku(
-                userID=idmUser.user, dakokuStatusID=dakokuKubun,
-                dakokuMethodID=dakokuMethod)
-            dakoku.save()
-            print(idmUser.user)
-            data.set_status(data.SUCCESS)
+        if idmUser is None:
+            data.set_status(data.FAILED)
             return
-        data.set_status(data.FAILED)
+        dakoku = Dakoku(
+            userID=idmUser.user,
+            dakokuStatusID=dakokuKubun,
+            dakokuMethodID=dakokuMethod)
+        dakoku.save()
+        print(idmUser.user)
+        data.set_status(data.SUCCESS)
         # ensure
 
 
