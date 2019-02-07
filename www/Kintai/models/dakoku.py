@@ -5,13 +5,36 @@ r"""dakoku -- DESCRIPTION
 """
 from __future__ import unicode_literals
 
+from collections import Iterable
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.query import QuerySet
 from django.db.models import Manager, Q
 
+
+
 import dakokuKubun
 import dakokuMethod
+
+
+class DakokuAnalyzer(object):
+    """DakokuAnalyzer
+
+    DakokuAnalyzer is a object.
+    Responsibility:
+    """
+    def __init__(self, dakokus):
+        """
+
+        @Arguments:
+        - `dakokus`:
+        """
+        if not isinstance(dakokus, (Iterable, )):
+            raise TypeError('dakoku must be Iterable')
+        self._dakokus = dakokus
+
+
 
 
 class ManagerAbstract(Manager):
